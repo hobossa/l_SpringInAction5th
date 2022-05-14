@@ -11,8 +11,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 // import static org.junit.jupiter.api.Assertions.*;
 
-@WebMvcTest(HomeController.class)
-class HomeControllerTest {
+@WebMvcTest
+class WebConfig {
     @Autowired
     private MockMvc mockMvc;
 
