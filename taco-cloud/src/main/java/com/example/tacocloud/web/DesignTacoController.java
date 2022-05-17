@@ -28,6 +28,13 @@ public class DesignTacoController {
     private final IngredientRepository ingredientRepo;
     private TacoRepository designRepo;
 
+    @Autowired
+    public DesignTacoController(IngredientRepository ingredientRepo,
+                                TacoRepository designRepo) {
+        this.ingredientRepo = ingredientRepo;
+        this.designRepo = designRepo;
+    }
+
     @ModelAttribute(name = "order")
     public Order order() {
         return new Order();
@@ -36,13 +43,6 @@ public class DesignTacoController {
     @ModelAttribute(name = "taco")
     public Taco tack() {
         return new Taco();
-    }
-
-    @Autowired
-    public DesignTacoController(IngredientRepository ingredientRepo,
-                                TacoRepository designRepo) {
-        this.ingredientRepo = ingredientRepo;
-        this.designRepo = designRepo;
     }
 
     @GetMapping
@@ -64,7 +64,6 @@ public class DesignTacoController {
         if (errors.hasErrors()) {
             return "design";
         }
-
         // log.info("Processing design: " + design);
         Taco saved = designRepo.save(design);
         order.addDesign(saved);
