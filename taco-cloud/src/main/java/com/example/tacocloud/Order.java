@@ -26,29 +26,32 @@ public class Order implements Serializable {
 
     private Date placedAt;
 
-    @NotBlank(message="Name is required")
-    private String name;
+    @ManyToOne
+    private User user;
 
-    @NotBlank(message="Street is required")
-    private String street;
+    @NotBlank(message = "Delivery name is required")
+    private String deliveryName;
 
-    @NotBlank(message="City is required")
-    private String city;
+    @NotBlank(message = "Street is required")
+    private String deliveryStreet;
 
-    @NotBlank(message="State is required")
-    private String state;
+    @NotBlank(message = "City is required")
+    private String deliveryCity;
 
-    @NotBlank(message="Zip code is required")
-    private String zip;
+    @NotBlank(message = "State is required")
+    private String deliveryState;
 
-    @CreditCardNumber(message="Not a valid credit card number")
+    @NotBlank(message = "Zip code is required")
+    private String deliveryZip;
+
+    @CreditCardNumber(message = "Not a valid credit card number")
     private String ccNumber;
 
-    @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
-            message="Must be formatted MM/YY")
+    @Pattern(regexp = "^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
+            message = "Must be formatted MM/YY")
     private String ccExpiration;
 
-    @Digits(integer=3, fraction=0, message="Invalid CVV")
+    @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
     private String ccCVV;
 
     @ManyToMany(targetEntity = Taco.class)
@@ -59,7 +62,7 @@ public class Order implements Serializable {
     }
 
     @PrePersist
-    void placeAt() {
+    void placedAt() {
         this.placedAt = new Date();
     }
 }
