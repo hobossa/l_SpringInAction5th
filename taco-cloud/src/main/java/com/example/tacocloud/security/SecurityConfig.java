@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
     // end (Customizing user authentication)
 
+    /*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // super.configure(http);
@@ -162,6 +163,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    */
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
